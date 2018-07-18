@@ -11,7 +11,7 @@ export default class ConnectionRenderer {
             .horizontalLineTo(x2)
             .end();
 
-        const classes = getClasses(connection);
+        const classes = this.getClasses(connection);
 
         el.innerHTML = `<svg class="connection ${classes.join(' ')}">
             <path d="${path}"/>
@@ -24,10 +24,10 @@ export default class ConnectionRenderer {
 
     getClasses(connection) {
         return !connection?[]:[
-            'input-' + toTrainCase(connection.input.name),
-            'output-' + toTrainCase(connection.output.name),
-            'socket-input-' + toTrainCase(connection.input.socket.name),
-            'socket-output-' + toTrainCase(connection.output.socket.name)
+            'input-' + this.toTrainCase(connection.input.name),
+            'output-' + this.toTrainCase(connection.output.name),
+            'socket-input-' + this.toTrainCase(connection.input.socket.name),
+            'socket-output-' + this.toTrainCase(connection.output.socket.name)
         ];
     }
 }
