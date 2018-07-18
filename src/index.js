@@ -1,6 +1,6 @@
 import Plugin from "./plugin";
 
-export default function install(editor) {
+function install(editor) {
     const plugin = new Plugin(editor);
 
     editor.on('rendersocket', ({ el, input, output, socket }) => {
@@ -21,3 +21,5 @@ export default function install(editor) {
 
     editor.on('renderconnection', arg => renderConnection(arg));
 }
+
+export default {install}
