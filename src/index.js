@@ -1,7 +1,9 @@
 import Plugin from "./plugin";
+import ConnectionRenderer from "./connection-renderer";
 
 function install(editor) {
     const plugin = new Plugin(editor);
+    const connectionRenderer = new ConnectionRenderer();
 
     editor.on('rendersocket', ({ el, input, output, socket }) => {
         var prevent = false;
@@ -14,12 +16,12 @@ function install(editor) {
 
     editor.on('mousemove', arg => {
         plugin.mousePosition = arg;
-        picker.renderConnection(arg);
+        plugin.picker.renderConnection(arg);
     });
 
     editor.on('click', () => { plugin.picker.output = null; });
 
-    editor.on('renderconnection', arg => renderConnection(arg));
+    editor.on('renderconnection', arg => connectionRenderer.render(arg));
 }
 
 export default {install}

@@ -3,6 +3,7 @@ import ConnectionRenderer from './connection-renderer';
 export default class Picker {
     constructor(editor) {
         this.el = document.createElement('div');
+        this.connectionRenderer = new ConnectionRenderer();
         this.editor = editor;
         this._output = null;
     }
@@ -32,7 +33,7 @@ export default class Picker {
         const node = this.editor.view.nodes.get(this.output.node);
         const [x1, y1] = node.getSocketPosition(this.output);
 
-        ConnectionRenderer.render({ el: this.el, x1, y1, x2: x, y2: y, connection: null });
+        this.connectionRenderer.render({ el: this.el, x1, y1, x2: x, y2: y, connection: null });
     }
 
 }
