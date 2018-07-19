@@ -1,10 +1,10 @@
 import Picker from "./picker";
 
 export default class Plugin {
-    constructor(editor) {
+    constructor(editor, options) {
         this.editor = editor;
         this.mousePosition = [0, 0];
-        this.picker = new Picker(editor);
+        this.picker = new Picker(editor, options);
     }
 
     pickOutput(output, node) {

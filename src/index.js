@@ -1,9 +1,15 @@
 import Plugin from "./plugin";
 import ConnectionRenderer from "./connection-renderer";
+import Options from './options';
+import ArrowOptions from './arrow-options';
 
-function install(editor) {
-    const plugin = new Plugin(editor);
-    const connectionRenderer = new ConnectionRenderer();
+function install(editor, options) {
+    if (typeof options === 'undefined') {
+        options = new Options();
+    }
+
+    const plugin = new Plugin(editor, options);
+    const connectionRenderer = new ConnectionRenderer(options);
 
     editor.on('rendersocket', ({ el, input, output, socket }) => {
         var prevent = false;
@@ -24,4 +30,5 @@ function install(editor) {
     editor.on('renderconnection', arg => connectionRenderer.render(arg));
 }
 
+export {ArrowOptions, Options};
 export default {install}

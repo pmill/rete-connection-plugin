@@ -8,3 +8,14 @@
     stroke: steelblue;
   }
 }
+
+.connection-arrow {
+  overflow: visible !important;
+  pointer-events: none;
+
+  path {
+    fill: steelblue;
+    stroke-width: 5px;
+    stroke: steelblue;
+  }
+}

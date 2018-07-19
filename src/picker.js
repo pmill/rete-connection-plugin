@@ -1,9 +1,9 @@
 import ConnectionRenderer from './connection-renderer';
 
 export default class Picker {
-    constructor(editor) {
+    constructor(editor, options) {
         this.el = document.createElement('div');
-        this.connectionRenderer = new ConnectionRenderer();
+        this.connectionRenderer = new ConnectionRenderer(options);
         this.editor = editor;
         this._output = null;
     }
