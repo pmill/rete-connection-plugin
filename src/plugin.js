@@ -5,6 +5,7 @@ export default class Plugin {
         this.editor = editor;
         this.mousePosition = [0, 0];
         this.picker = new Picker(editor, options);
+        this.preventingMouseHandling = false;
     }
 
     pickOutput(output, node) {
@@ -43,7 +44,7 @@ export default class Plugin {
     }
 
     mouseHandle(e, input, output, socket) {
-        if (prevent) {
+        if (this.preventingMouseHandling) {
             return;
         }
 
@@ -55,5 +56,9 @@ export default class Plugin {
         } else if (output) {
             this.pickOutput(output, socket);
         }
+    }
+
+    preventMouseHandling(value) {
+        this.preventingMouseHandling = value;
     }
 }

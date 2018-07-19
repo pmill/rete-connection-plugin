@@ -14,9 +14,9 @@ function install(editor, options) {
     editor.on('rendersocket', ({ el, input, output, socket }) => {
         var prevent = false;
 
-        el.addEventListener('mousedown', e => (plugin.mouseHandle(e, input, output, socket), prevent = true));
+        el.addEventListener('mousedown', e => (plugin.mouseHandle(e, input, output, socket), plugin.preventMouseHandling(true)));
         el.addEventListener('mouseup', e => plugin.mouseHandle(e, input, output, socket));
-        el.addEventListener('click', e => (plugin.mouseHandle(e, input, output, socket), prevent = false));
+        el.addEventListener('click', e => (plugin.mouseHandle(e, input, output, socket), plugin.preventMouseHandling(false)));
         el.addEventListener('mousemove', () => (prevent = false));
     });
 
